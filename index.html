@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kyle Edl Portfolio</title>
-
+    <meta name="darkreader-lock">
     <link rel="stylesheet" href="style.css?v=1.1" />
 
     <!-- Box Icons -->
@@ -310,6 +310,23 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", async () => {
+        try {
+          const { data, error } = await supabase
+            .from("entries")
+            .select("*");
+    
+          if (error) {
+            console.error("Error fetching data:", error);
+          } else {
+            console.log("Data Fetched");
+          }
+        } catch (error) {
+          console.error("An error occurred:", error.message);
+        }
+      });
+    </script>
     <script>
       const { createClient } = supabase;
       supabase = createClient(
